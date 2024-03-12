@@ -34,8 +34,7 @@ export class HomeComponent implements OnInit {
     // debugger
     this.cartPro.ProductId = productids;
     this.allProduct.addToCart(this.cartPro).subscribe((res: any) => {
-      if (res.results) {
-        alert("Product Added To cart")
+      if (res.result) {
         this.allProduct.cartAddedSubject.next(true);
       }
     })

@@ -14,10 +14,9 @@ export class ProductService {
     return this.http.get<any[]>("https://freeapi.gerasim.in/api/amazon/GetAllProducts")
   }
   addToCart(obj: any): Observable<any> {
-    // debugger
     return this.http.post<any>("https://freeapi.gerasim.in/api/amazon/AddToCart", obj)
   }
-  getSingleCstId(custId:number):Observable<any[]>{
+  getSingleCstId(custId: number): Observable<any[]> {
     return this.http.get<any[]>("https://freeapi.gerasim.in/api/amazon/GetCartProductsByCustomerId?id=" + custId)
   }
 }

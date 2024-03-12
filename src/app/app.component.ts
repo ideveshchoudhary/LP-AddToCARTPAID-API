@@ -9,20 +9,24 @@ import { ProductService } from './service/product.service';
 export class AppComponent implements OnInit {
   cstCartAdd: any[] = [];
   title = 'MovieRevies';
-  constructor(private productService: ProductService) {
-    this.productService.cartAddedSubject.subscribe(res => {
+
+  constructor(private allProductAPI: ProductService) {
+    this.allProductAPI.cartAddedSubject.subscribe(res => {
+      this.showCstPro();
 
     })
   }
 
   ngOnInit(): void {
-    this.loadCart();
+    this.showCstPro();
   }
 
-  loadCart() {
-    this.productService.getSingleCstId(1).subscribe((res: any) => {
-      this.cstCartAdd = res;
+  showCstPro() {
+    this.allProductAPI.getSingleCstId(1).subscribe((res: any) => {
+      this.cstCartAdd = res.data;
       debugger
     })
   }
+
+
 }

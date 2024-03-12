@@ -84,7 +84,7 @@
                             <!-- <i class="fa-solid fa-cart-shopping"></i> -->
                             <span class="position-absolute  translate-middle badge rounded-pill bg-danger">
 
-                                <span class="visually-hidden">unread messages</span>
+                                <span class="visually">{{cstCartAdd.length}}</span>
                             </span>
                         </a>
                         <div class="dropdown-menu">
@@ -97,19 +97,20 @@
                                         Remove All
                                     </div>
                                 </div>
-                                <div class="row pt-1">
+                                <div class="row pt-1" *ngFor="let cart of cstCartAdd">
                                     <div class="col-4">
-                                        <img class="img-fluid" style="height: 30px;border-radius: 50%;"
-                                            class="card-img-top">
+                                        <img class="img-fluid" style="height: 30px;border-radius: 50%;width: 100%;"
+                                            class="card-img-top" [src]="cart.productImageUrl">
                                     </div>
-                                    <div class="col-3">
-
+                                    <div class="col-3"
+                                        style="max-width: 50ch;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                        {{cart.productShortName}}
                                     </div>
                                     <div class="col-2">
-
+                                        {{cart.quantity + 1}}
                                     </div>
                                     <div class="col-2 text-end">
-
+                                        {{cart.productPrice}}
                                     </div>
                                 </div>
 
