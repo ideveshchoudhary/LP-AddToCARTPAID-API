@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
+  public cartAddedSubject = new Subject<boolean>();
   constructor(private http: HttpClient) {
 
   }
@@ -14,7 +14,10 @@ export class ProductService {
     return this.http.get<any[]>("https://freeapi.gerasim.in/api/amazon/GetAllProducts")
   }
   addToCart(obj: any): Observable<any> {
-    debugger
+    // debugger
     return this.http.post<any>("https://freeapi.gerasim.in/api/amazon/AddToCart", obj)
+  }
+  getSingleCstId(custId:number):Observable<any[]>{
+    return this.http.get<any[]>("https://freeapi.gerasim.in/api/amazon/GetCartProductsByCustomerId?id=" + custId)
   }
 }

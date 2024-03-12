@@ -19,8 +19,8 @@
                     <div class="col-lg-4  pt-1" *ngFor="let product of productList">
                         <div class="box-shadow">
                             <div class="card">
-                                <img class="img-fluid" style="height: 200px;" [src]="product.productImageUrl"
-                                    class="card-img-top" alt="...">
+                                <img class="img-fluid card-img-top" style="height: 200px;"
+                                    [src]="product.productImageUrl" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">{{product.productName}}</h5>
                                     <p class="card-text"><span
@@ -35,7 +35,8 @@
                                             <span class="text-muted">(21)</span>
                                         </div>
                                         <div class="col-6 text-end">
-                                            <button class="btn btn-sm btn-success" (click)="addToCart(product.productId)">  Add To Cart</button>
+                                            <button class="btn btn-sm btn-success"
+                                                (click)="addToCart(product.productId)"> Add To Cart</button>
                                         </div>
                                     </div>
 
