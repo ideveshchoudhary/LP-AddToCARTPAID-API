@@ -6,8 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {
-    path: '**',
-    pathMatch: 'full',
+    path: '',
     component: HomeComponent
   },
   {
@@ -20,6 +19,11 @@ const routes: Routes = [
   },
   {
     path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
     component: HomeComponent
   }
 ];
