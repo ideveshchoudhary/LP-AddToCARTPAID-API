@@ -1,1 +1,23 @@
-<p>product works!</p>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Seriol Number</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Prouct Price</th>
+                <th scope="col">Prouct Descrption</th>
+                <th scope="col">Product Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pro of cstCartAdd; let i = index;">
+                <td scope="row">{{i + 1}}</td>
+                <td scope="row">{{pro.productName}}</td>
+                <td>{{pro.productPrice}}</td>
+                <td>{{pro.productDescription}}</td>
+                <td><img [src]="pro.productImageUrl" class="img-fluid"></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

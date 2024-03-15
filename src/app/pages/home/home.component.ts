@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit {
   }
 
   addToCart(productids: number) {
-    // debugger
     this.cartPro.ProductId = productids;
     this.allProduct.addToCart(this.cartPro).subscribe((res: any) => {
       if (res.result) {
