@@ -19,4 +19,8 @@ export class ProductService {
   getSingleCstId(custId: number): Observable<any[]> {
     return this.http.get<any[]>("https://freeapi.gerasim.in/api/amazon/GetCartProductsByCustomerId?id=" + custId)
   }
+  singleItemDel(cartId: number): Observable<any[]> {
+    return this.http.get<any[]>("https://freeapi.gerasim.in/api/amazon/DeleteProductFromCartById?id=" + cartId)
+  }
+
 }

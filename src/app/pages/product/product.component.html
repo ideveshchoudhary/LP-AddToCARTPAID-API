@@ -1,4 +1,4 @@
-<div class="table-responsive">
+<!-- <div class="table-responsive">
     <table class="table">
         <thead>
             <tr>
@@ -20,4 +20,64 @@
 
         </tbody>
     </table>
+</div> -->
+
+<div class="CartContainer">
+    <div class="row">
+        <div class="col-6">
+            Your Cart
+        </div>
+        <div class="col-6 text-end text-danger">
+            Remove All
+        </div>
+    </div>
+    <div class="row pt-1 border align-items-center" *ngFor="let cart of cstCartAdd">
+        <div class="col-1">
+            {{cart.quantity + 1}}
+        </div>
+        <div class="col-4 ">
+            <img class="img-fluid" style="height: 100%;width: 100%;" class="card-img-top" [src]="cart.productImageUrl">
+        </div>
+        <div class="col-3" style="max-width: 50ch;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+            {{cart.productShortName}}
+        </div>
+
+        <div class="col-2 text-end">
+            {{cart.productPrice}}
+        </div>
+        <div class="col-2 text-end">
+            <button class="btn btn-sm btn-danger" (click)="remove(cart.cartId)">Remove</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-9">
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-2">
+
+        </div>
+        <div class="col-4">
+            <div class="Subtotal">Sub-Total</div>
+            <div> <small> {{cstCartAdd.length}}</small></div>
+        </div>
+        <div class="col-4 text-end">
+            <strong>{{subTotal}} </strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <button class="btn btn-sm btn-success">Make Sale</button>
+        </div>
+    </div>
+
 </div>

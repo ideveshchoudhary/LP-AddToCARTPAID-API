@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/service/product.service';
 
 @Component({
@@ -6,11 +6,14 @@ import { ProductService } from 'src/app/service/product.service';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit {
   cstCartAdd: any[] = [];
   subTotal: number = 0;
   constructor(private allProductAPI: ProductService) {
 
+  }
+  ngOnInit(): void {
+    this.showCstPro();
   }
 
   showCstPro() {
@@ -19,6 +22,15 @@ export class ProductComponent {
       this.cstCartAdd.forEach(element => {
         this.subTotal += element.productPrice
       });
+    })
+  }
+  remove(id: number) {
+    this.allProductAPI.singleItemDel(id).subscribe((res: any) => {
+      if (res.result) {
+        this.showCstPro();
+        this.allProductAPI.cartAddedSubject.next(true);
+
+      }
     })
   }
 }
