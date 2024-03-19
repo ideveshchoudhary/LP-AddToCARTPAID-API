@@ -9,6 +9,19 @@ import { ProductService } from 'src/app/service/product.service';
 export class ProductComponent implements OnInit {
   cstCartAdd: any[] = [];
   subTotal: number = 0;
+  saleObj: any = {
+    "saleId": 1204,
+    "custId": 1,
+    "saleDate": new Date(),
+    "totalInvoiceAmount": 259999,
+    "discount": 0,
+    "paymentNaration": "PayTM",
+    "deliveryAddress1": "Noida",
+    "deliveryAddress2": "Gurgao",
+    "deliveryCity": "Haryana",
+    "deliveryPinCode": "110092",
+    "deliveryLandMark": "School"
+  }
   constructor(private allProductAPI: ProductService) {
 
   }
@@ -32,5 +45,17 @@ export class ProductComponent implements OnInit {
 
       }
     })
+  }
+  makeSale() {
+    this.saleObj.totalInvoiceAmount = this.subTotal;
+    this.allProductAPI.cartAddedSubject.next(true);
+    this.allProductAPI.makeSingleSale(this.saleObj).subscribe((res: any) => {
+      if (res.result) {
+        this.showCstPro();
+        this.allProductAPI.cartAddedSubject.next(true);
+
+      }
+    })
+
   }
 }
